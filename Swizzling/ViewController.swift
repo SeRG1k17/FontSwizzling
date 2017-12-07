@@ -17,8 +17,9 @@ class ViewController: UIViewController {
         let label = UILabel(frame: CGRect(x: 50, y: 50, width: 200, height: 30))
         label.text = "Hello world!"
         label.backgroundColor = .orange
-        label.font = UIFont.systemFont(ofSize: 35, weight: UIFont.Weight.ultraLight)
+        label.font = UIFont.boldSystemFont(ofSize: 35)
         
+        print(label)
         view.addSubview(label)
         
         let button = UIButton(frame: CGRect(x: 50, y: 250, width: 30, height: 30))

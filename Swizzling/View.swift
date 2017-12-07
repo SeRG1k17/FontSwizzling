@@ -36,13 +36,14 @@ extension UIView {
         
         if let label = self as? UILabel {
             label.font = UIFont(from: label.font)
-            
-        } else if let button = self as? UIButton, let titleLabel = button.titleLabel, let newFont = UIFont(from: titleLabel.font) {
-            titleLabel.font = newFont
-            
-        } else if let textfield = self as? UITextField, var font = textfield.font, let newFont = UIFont(from: font) {
-            font = newFont
         }
+        
+//        else if let button = self as? UIButton, let titleLabel = button.titleLabel, let newFont = UIFont(from: titleLabel.font) {
+//            titleLabel.font = newFont
+//
+//        } else if let textfield = self as? UITextField, var font = textfield.font, let newFont = UIFont(from: font) {
+//            font = newFont
+//        }
         
         if includingSubViews {
             let _ = subviews.map { $0.setDefaultFontFamily(includingSubViews: includingSubViews) }

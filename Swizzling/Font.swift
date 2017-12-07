@@ -8,8 +8,14 @@
 
 import UIKit
 
-let DefaultFontFamily = "San Francisco Display"
-let Separator = ""
+let DefaultFontFamily = "San Francisco Display" // "Sweet Sensations Personal Use"//
+let Separator = "-"
+
+extension String {
+    var removeWhitespaces: String {
+        return components(separatedBy: .whitespaces).joined()
+    }
+}
 
 extension UIFont {
     
@@ -20,87 +26,118 @@ extension UIFont {
     static let classInit: Void = {
         classMethodSwizzling(UIFont.self, #selector(systemFont(ofSize:)), #selector(swizzledSystemFont(ofSize:)))
         classMethodSwizzling(UIFont.self, #selector(systemFont(ofSize:weight:)), #selector(swizzledSystemFont(ofSize:weight:)))
+        classMethodSwizzling(UIFont.self, #selector(boldSystemFont(ofSize:)), #selector(swizzledBoldSystemFont(ofSize:)))
     }()
     
     
     @objc class func swizzledSystemFont(ofSize fontSize: CGFloat) -> UIFont {
-        //string.trimmingCharacters(in: .whitespaces)
-        //UIFont.familyNames.forEach { print($0)}
-        let fonts = UIFont.fontNames(forFamilyName: DefaultFontFamily)
         
-        print(fonts)
-        return UIFont(name: "\(DefaultFontFamily)\(Separator)\(FontWeight.regular.string)", size: fontSize)!
+        if let font = UIFont(name: DefaultFontFamily, size: fontSize) {
+            return font
+            
+        } else if
+            let firstFontName = UIFont.fontNames(forFamilyName: DefaultFontFamily).first,
+            let font = UIFont(name: firstFontName, size: fontSize) {
+            
+            return font
+            
+        } else {
+            return UIFont.swizzledSystemFont(ofSize: fontSize)
+        }
     }
 
     @objc class func swizzledSystemFont(ofSize fontSize: CGFloat, weight: UIFont.Weight) -> UIFont {
         
-        let fontName = DefaultFontFamily + Separator + FontWeight.weight(for: weight)
-        return UIFont(name: fontName, size: fontSize)!
+        let fontName = DefaultFontFamily.removeWhitespaces + Separator + FontWeight.weightName(for: weight)
+        
+        if let font = UIFont(name: fontName, size: fontSize) {
+            return font
+            
+        } else {
+            return UIFont.swizzledSystemFont(ofSize: fontSize)
+        }
+    }
+    
+    @objc class func swizzledBoldSystemFont(ofSize fontSize: CGFloat) -> UIFont {
+        
+        let fontName = DefaultFontFamily.removeWhitespaces + Separator + FontWeight.bold.description
+        
+        if let font = UIFont(name: fontName, size: fontSize) {
+            return font
+            
+        } else {
+            return UIFont.swizzledBoldSystemFont(ofSize: fontSize)
+        }
     }
 
     
     convenience init?(from font: UIFont) {
         
         var fontName = font.fontName
-        if font == UIFont.systemFont(ofSize: font.pointSize) {
-            fontName = DefaultFontFamily + Separator + UIFont.weight(for: font)
+        
+        if font.familyName == UIFont.swizzledSystemFont(ofSize: font.pointSize).familyName {
+            
+            fontName = DefaultFontFamily.removeWhitespaces
+            
+            if let weightName = font.weightName {
+                fontName += Separator + weightName
+            }
+        }
+        
+        print(fontName)
+        if UIFont(name: fontName, size: font.pointSize) == nil {
+            fontName = font.fontName
         }
         
         self.init(name: fontName, size: font.pointSize)
     }
     
-    static func weight(for font: UIFont) -> String {
-        
-        print(font.fontName)
-        var fontWeigth: String!
-        
-        if let match = font.fontName.range(of: "\(Separator)[\\w]+$", options: .regularExpression){
-            fontWeigth = String(font.fontName[match])
-            fontWeigth.removeFirst()
-            
-        } else {
-            fontWeigth = FontWeight.regular.string
-        }
-        
-        return fontWeigth
+    var weightName: String? {
+
+        guard let match = fontName.range(of: "[A-z][a-z]+$", options: .regularExpression) else { return nil }
+        return String(fontName[match])
     }
+
 }
 
 enum FontWeight {
     
     case ultraLight, thin, light, regular, medium, semibold, bold, heavy, black
-    var string: String {
+    
+    var description: String {
         return String(describing: self).capitalized
     }
     
-    var weight: UIFont.Weight {
+    private var weight: UIFont.Weight {
         
         switch self {
-        case .ultraLight: return UIFont.Weight.ultraLight
-        case .thin: return UIFont.Weight.thin
-        case .light: return UIFont.Weight.light
-        case .regular: return UIFont.Weight.regular
-        case .medium: return UIFont.Weight.medium
-        case .semibold: return UIFont.Weight.semibold
-        case .bold: return UIFont.Weight.bold
-        case .heavy: return UIFont.Weight.heavy
-        case .black: return UIFont.Weight.black
+        case .ultraLight: return .ultraLight
+        case .thin: return .thin
+        case .light: return .light
+        case .regular: return .regular
+        case .medium: return .medium
+        case .semibold: return .semibold
+        case .bold: return .bold
+        case .heavy: return .heavy
+        case .black: return .black
         }
     }
     
-    static func weight(for fontWeight: UIFont.Weight) -> String {
+    static func weightName(for fontWeight: UIFont.Weight) -> String {
         
-        var result = FontWeight.regular.string
+        var name: String!
         
         for w in iterateEnum(FontWeight.self) {
             
             if w.weight == fontWeight {
-                result =  w.string
+                name = w.description
+                break
             }
         }
         
-        return result
+        return name
     }
+    
 }
 
 func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
