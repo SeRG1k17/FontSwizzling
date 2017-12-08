@@ -31,19 +31,27 @@
 		650E06A21F8782E9006981FD /* SweetSensationsPersonalUse.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 650E06A11F8782E8006981FD /* SweetSensationsPersonalUse.ttf */; };
 		650E06A41F8783F7006981FD /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 650E06A31F8783AD006981FD /* OpenSans-Light.ttf */; };
 		650E06A61F878B9A006981FD /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E06A51F878B9A006981FD /* Swizzling.swift */; };
+		65A25F181FDA7E6300634FB4 /* EnumCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A25F161FDA7E6200634FB4 /* EnumCollection.swift */; };
+		65A25F191FDA7E6300634FB4 /* FontReplacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A25F171FDA7E6200634FB4 /* FontReplacer.swift */; };
+		65A25F1B1FDA7E8F00634FB4 /* FontWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A25F1A1FDA7E8F00634FB4 /* FontWeight.swift */; };
+		65A25F1D1FDA7F6700634FB4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A25F1C1FDA7F6700634FB4 /* String.swift */; };
 		65FEB85E1F8773CF00693A2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FEB85D1F8773CF00693A2B /* AppDelegate.swift */; };
 		65FEB8601F8773CF00693A2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FEB85F1F8773CF00693A2B /* ViewController.swift */; };
 		65FEB8631F8773CF00693A2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FEB8611F8773CF00693A2B /* Main.storyboard */; };
 		65FEB8651F8773CF00693A2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65FEB8641F8773CF00693A2B /* Assets.xcassets */; };
 		65FEB8681F8773CF00693A2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FEB8661F8773CF00693A2B /* LaunchScreen.storyboard */; };
-		65FEB8701F8773DA00693A2B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FEB86F1F8773DA00693A2B /* Font.swift */; };
-		65FEB8721F8773E300693A2B /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FEB8711F8773E300693A2B /* View.swift */; };
+		65FEB8701F8773DA00693A2B /* FontSwizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FEB86F1F8773DA00693A2B /* FontSwizzling.swift */; };
+		65FEB8721F8773E300693A2B /* ViewSwizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FEB8711F8773E300693A2B /* ViewSwizzling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		650E06A11F8782E8006981FD /* SweetSensationsPersonalUse.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SweetSensationsPersonalUse.ttf; sourceTree = "<group>"; };
 		650E06A31F8783AD006981FD /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		650E06A51F878B9A006981FD /* Swizzling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swizzling.swift; sourceTree = "<group>"; };
+		65A25F161FDA7E6200634FB4 /* EnumCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumCollection.swift; sourceTree = "<group>"; };
+		65A25F171FDA7E6200634FB4 /* FontReplacer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontReplacer.swift; sourceTree = "<group>"; };
+		65A25F1A1FDA7E8F00634FB4 /* FontWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontWeight.swift; sourceTree = "<group>"; };
+		65A25F1C1FDA7F6700634FB4 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		65FEB85A1F8773CF00693A2B /* Swizzling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swizzling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FEB85D1F8773CF00693A2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65FEB85F1F8773CF00693A2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,8 +59,8 @@
 		65FEB8641F8773CF00693A2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65FEB8671F8773CF00693A2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65FEB8691F8773CF00693A2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		65FEB86F1F8773DA00693A2B /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		65FEB8711F8773E300693A2B /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		65FEB86F1F8773DA00693A2B /* FontSwizzling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSwizzling.swift; sourceTree = "<group>"; };
+		65FEB8711F8773E300693A2B /* ViewSwizzling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwizzling.swift; sourceTree = "<group>"; };
 		65FEB8741F87752D00693A2B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		65FEB8751F87752D00693A2B /* SanFranciscoDisplay-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Black.otf"; sourceTree = "<group>"; };
 		65FEB8761F87752D00693A2B /* SanFranciscoDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Bold.otf"; sourceTree = "<group>"; };
@@ -110,8 +118,12 @@
 				65FEB85D1F8773CF00693A2B /* AppDelegate.swift */,
 				65FEB85F1F8773CF00693A2B /* ViewController.swift */,
 				650E06A51F878B9A006981FD /* Swizzling.swift */,
-				65FEB86F1F8773DA00693A2B /* Font.swift */,
-				65FEB8711F8773E300693A2B /* View.swift */,
+				65FEB86F1F8773DA00693A2B /* FontSwizzling.swift */,
+				65FEB8711F8773E300693A2B /* ViewSwizzling.swift */,
+				65A25F161FDA7E6200634FB4 /* EnumCollection.swift */,
+				65A25F171FDA7E6200634FB4 /* FontReplacer.swift */,
+				65A25F1A1FDA7E8F00634FB4 /* FontWeight.swift */,
+				65A25F1C1FDA7F6700634FB4 /* String.swift */,
 				65FEB8611F8773CF00693A2B /* Main.storyboard */,
 				65FEB8731F87752D00693A2B /* SanFrancisco */,
 				65FEB8641F8773CF00693A2B /* Assets.xcassets */,
@@ -247,11 +259,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65FEB8721F8773E300693A2B /* View.swift in Sources */,
+				65FEB8721F8773E300693A2B /* ViewSwizzling.swift in Sources */,
 				65FEB8601F8773CF00693A2B /* ViewController.swift in Sources */,
+				65A25F1B1FDA7E8F00634FB4 /* FontWeight.swift in Sources */,
+				65A25F1D1FDA7F6700634FB4 /* String.swift in Sources */,
+				65A25F191FDA7E6300634FB4 /* FontReplacer.swift in Sources */,
+				65A25F181FDA7E6300634FB4 /* EnumCollection.swift in Sources */,
 				650E06A61F878B9A006981FD /* Swizzling.swift in Sources */,
 				65FEB85E1F8773CF00693A2B /* AppDelegate.swift in Sources */,
-				65FEB8701F8773DA00693A2B /* Font.swift in Sources */,
+				65FEB8701F8773DA00693A2B /* FontSwizzling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,8 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override init() {
         super.init()
         
-        UIFont.classInit
-        UIView.classInit
+        //UIFont.classInit
+        //UIView.classInit
+        
+        FontReplacer.shared.replaceSystemFontsFamily(to: "San Francisco Display")
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

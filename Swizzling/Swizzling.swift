@@ -8,28 +8,27 @@
 
 import Foundation
 
-let classMethodSwizzling: (AnyClass, Selector, Selector) -> () = { forClass, originalSelector, swizzledSelector in
+let exchangeSwizzling: (Method?, Method?) -> () = { originalMethod, swizzledMethod in
     
     guard
-        let originalMethod = class_getClassMethod(forClass, originalSelector),
-        let swizzledMethod = class_getClassMethod(forClass, swizzledSelector) else { return }
+        let originalMethod = originalMethod,
+        let swizzledMethod = swizzledMethod else { return }
     
     method_exchangeImplementations(originalMethod, swizzledMethod)
 }
 
-let instanceMethodSwizzling: (AnyClass, Selector, Selector) -> () = { forClass, originalSelector, swizzledSelector in
+let swizzling: (AnyClass, Method?, Method?) -> () = { forClass, originalMethod, swizzledMethod in
     
     guard
-        let originalMethod = class_getInstanceMethod(forClass, originalSelector),
-        let swizzledMethod = class_getInstanceMethod(forClass, swizzledSelector) else { return }
+        let originalMethod = originalMethod,
+        let swizzledMethod = swizzledMethod else { return }
     
-//    let didAddMethod = class_addMethod(forClass, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
-//
-//    if didAddMethod {
-//        class_replaceMethod(forClass, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
-//    } else {
-//        method_exchangeImplementations(originalMethod, swizzledMethod)
-//    }
+    let didAddMethod = class_addMethod(forClass, method_getName(originalMethod), method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
     
-    method_exchangeImplementations(originalMethod, swizzledMethod)
+    if didAddMethod {
+        class_replaceMethod(forClass, method_getName(swizzledMethod), method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
+        
+    } else {
+        exchangeSwizzling(originalMethod, swizzledMethod)
+    }
 }

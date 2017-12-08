@@ -14,10 +14,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let label = UILabel(frame: CGRect(x: 50, y: 50, width: 200, height: 30))
+        let label = UILabel(frame: CGRect(x: 20, y: 50, width: 400, height: 70))
         label.text = "Hello world!"
         label.backgroundColor = .orange
-        label.font = UIFont.boldSystemFont(ofSize: 35)
+        label.font = UIFont.systemFont(ofSize: 60)
         
         print(label)
         view.addSubview(label)
